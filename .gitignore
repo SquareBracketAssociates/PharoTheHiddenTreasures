@@ -1,0 +1,15 @@
+*.aux
+*.log
+*.out
+*.bbl
+*.blg
+auto/
+*.synctex.gz
+*.toc
+*.pier.*
+*.pillar.*
+/Pharo.changes
+/Pharo.image
+/TheHiddenParts.tex
+/book-result/
+/pillar
