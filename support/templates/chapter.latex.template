@@ -10,6 +10,7 @@
 		ignoreheadfoot
 	]{geometry}
 	\input{../support/latex/common.tex}
+	% \input{../support/latex/commonLuaTex.tex}
 	\setboolean{lulu}{true}
 % --------------------------------------------
 % A4:

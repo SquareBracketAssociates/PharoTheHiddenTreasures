@@ -5,24 +5,34 @@
 # Exit immediately if a command exits with a non-zero status
 set -e
 
+LATEX_COMPILER="pdflatex"
+# LATEX_COMPILER="lualatex"
+
+PILLAR_COMMAND="./pillar"
+
+if hash "pillar" 2>/dev/null; then
+  PILLAR_COMMAND="pillar"
+fi
+
 function pillar_all() {
-  ./pillar export --to='LaTeX whole book'
-  ./pillar export --to='LaTeX by chapter'
-  ./pillar export --to='HTML by chapter'
+  $PILLAR_COMMAND export --to='LaTeX whole book'
+  $PILLAR_COMMAND export --to='LaTeX by chapter'
+  $PILLAR_COMMAND export --to='HTML by chapter'
+  $PILLAR_COMMAND export --to='Markdown by chapter'
 }
 
 function pillar_one() {
   input="$1"
-  ./pillar export --to='LaTeX whole book' "$input"
-  ./pillar export --to='LaTeX by chapter' "$input"
-  ./pillar export --to='HTML by chapter' "$input"
+  $PILLAR_COMMAND export --to='LaTeX by chapter' "$input"
+  $PILLAR_COMMAND export --to='HTML by chapter' "$input"
+  $PILLAR_COMMAND export --to='Markdown by chapter' "$input"
 }
 
 function mypdflatex() {
   pillar_file="$1"
 
   echo "Compiling PDF from $pillar_file..."
-  lualatex --file-line-error --interaction=batchmode "\input" "$pillar_file" 2>&1 1>/dev/null
+  ${LATEX_COMPILER} -halt-on-error -file-line-error -interaction batchmode "$pillar_file" 2>&1 1>/dev/null
   ret=$?
   if [[ $ret -ne 0 ]]; then
     cat $pillar_file.log
@@ -32,11 +42,6 @@ function mypdflatex() {
 }
 
 function produce_pdf() {
-  if hash foobar 2>/dev/null; then
-    echo hello
-    return
-  fi
-
   dir="$1"
   pillar_file="$2"
 
@@ -46,7 +51,7 @@ function produce_pdf() {
 }
 
 function compile_chapters() {
-  chapters=$(./pillar show inputFiles 2>/dev/null)
+  chapters=$($PILLAR_COMMAND show inputFiles 2>/dev/null)
 
   for chapter in $chapters; do
     echo =========================================================
@@ -67,11 +72,11 @@ function compile_latex_book() {
   echo COMPILING Book
   echo =========================================================
   cd book-result
-  produce_pdf . TheHiddenParts
+  produce_pdf . Book
 }
 
 function latex_enabled() {
-  hash lualatex 2>/dev/null
+  hash ${LATEX_COMPILER} 2>/dev/null
 }
 
 if [[ $# -eq 1 ]]; then
