@@ -14,10 +14,8 @@ The External Resource Manager automatically keeps track for session change (imag
 
 Like that, a user of ==NBExternalResourceManager== doesn't need to implement a session checking logic, and need only to:
 
-# a) register object as external resource:
-[[[NBExternalResourceManager addResource: anObject.]]]
-
-# b) an object should understand the ==resourceData== message, which is remembered at registration point (it can be any external resource like, id, handle or memory pointer).
+# register object as external resource: ==NBExternalResourceManager addResource: anObject. ==
+# an object should understand the ==resourceData== message, which is remembered at registration point (it can be any external resource like, id, handle or memory pointer).
 
 Then, when object is garbage collected, its class will receive the  message ==finalizeResourceData:== to finalize the resource data passed as argument. The passed data is exactly same as previously returned by ==resourceData== method.
 
