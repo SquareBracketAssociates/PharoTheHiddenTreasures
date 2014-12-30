@@ -72,7 +72,7 @@ function compile_latex_book() {
   echo COMPILING Book
   echo =========================================================
   cd book-result
-  produce_pdf . TheHiddenParts
+  produce_pdf . TheHiddenTreasures
 }
 
 function latex_enabled() {
