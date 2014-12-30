@@ -17,7 +17,7 @@ Pass a ==.st== file as parameter to the VM, that is, you execute the VM like thi
  
 You execute the VM, pass the Pharo image as parameter and then the file. This will be executed during system startup. What's the problem with this? If you always want to execute the startup in different images you always need to open the image this way, from command line. Moreover, this file is hand-coded and not versioned in Monticello. 
 
-@@authorToDo is is still working like that?
+AuthorToDo is is still working like that?
 
 
 !!! Using the start up list
@@ -59,7 +59,7 @@ The location search order from the most general to the most specific are the fol
 General means that it applied to all Pharo versions. This folder is shared for all the images you open. 
 On Mac OSX and Pharo, it is =='Library/Preferences/pharo/==. In this place, ==StartupLoader== will load ALL existing ==.st== files. This type of startup is useful when we have something to execute for all images of all Pharo versions. 
 
-@@authorToDo SD: what is the location on linux an windows? Please add here.
+AuthorToDo SD: what is the location on linux an windows? Please add here.
 
 
 !!!Preference version folder
