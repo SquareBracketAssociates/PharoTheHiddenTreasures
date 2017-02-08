@@ -1,0 +1,7 @@
+{ "metadata": {
+        "title": "Little Hidden Treasures" ,
+        "attribution" : "Stéphane Ducasse"} }
+
+${inputFile:Chapters/ExternalResources/ExternalResources.pillar}$
+${inputFile:Chapters/StartupPreferences//StartupPreferences.pillar}$
+${inputFile:Chapters/ZincTricks/ZincTricks.pillar}$
