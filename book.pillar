@@ -5,3 +5,4 @@
 ${inputFile:Chapters/ExternalResources/ExternalResources.pillar}$
 ${inputFile:Chapters/StartupPreferences//StartupPreferences.pillar}$
 ${inputFile:Chapters/ZincTricks/ZincTricks.pillar}$
+${inputFile:Chapters/SortFunction/SortFunction.pillar}$
